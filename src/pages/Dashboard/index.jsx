@@ -180,6 +180,7 @@ const Dashboard = ({ theme }) => {
             editTaskData={editTask}
             onSubmit={handleCreateTask}
             onUpdate={handleUpdateTask}
+            theme={theme}
         />
         <Box
             style={{

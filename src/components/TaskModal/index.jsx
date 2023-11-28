@@ -11,7 +11,7 @@ import {
   Typography,
 } from "@mui/material";
 
-const TaskModal = ({ open, handleClose, onSubmit, isEdit = false, editTaskData, onUpdate }) => {
+const TaskModal = ({ open, handleClose, onSubmit, isEdit = false, editTaskData, onUpdate, theme }) => {
   const [taskDetails, setTaskDetails] = useState({
     title: "",
     description: "",
