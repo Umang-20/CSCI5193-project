@@ -130,6 +130,7 @@ const Dashboard = ({ theme }) => {
   return (
     <>
       <TaskModal
+          theme={theme}
         open={openModal}
         handleClose={handleCloseModal}
         isEdit={isEdit}

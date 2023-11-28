@@ -11,7 +11,7 @@ import {
   Typography,
 } from "@mui/material";
 
-const TaskModal = ({ open, handleClose, onSubmit, isEdit = false, editTaskData, onUpdate }) => {
+const TaskModal = ({ open, handleClose, onSubmit, isEdit = false, editTaskData, onUpdate, theme }) => {
   const [taskDetails, setTaskDetails] = useState({
     title: "",
     description: "",
@@ -48,13 +48,13 @@ const TaskModal = ({ open, handleClose, onSubmit, isEdit = false, editTaskData, 
           top: "50%",
           left: "50%",
           transform: "translate(-50%, -50%)",
-          bgcolor: "background.paper",
+          bgcolor: theme.palette.card.primary,
           boxShadow: 24,
           p: 4,
           borderRadius: "8px",
           minWidth: "300px",
         }}>
-        <Typography variant="h5" gutterBottom>
+        <Typography variant="h5" gutterBottom style={{color: theme.palette.text.primary}}>
           Create Task
         </Typography>
         <TextField
