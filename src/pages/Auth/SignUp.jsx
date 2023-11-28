@@ -94,96 +94,97 @@ export default function Signup({ theme }) {
   };
 
   return (
-    <div style={{ marginTop: "5rem" }}>
-      <div
-        style={{
-          backgroundColor: theme.palette.card.primary,
-          borderRadius: "8px",
-          boxShadow: "0 0 10px rgba(0, 0, 0, 0.2)",
-          width: "40vw",
-          padding: "20px",
-          boxSizing: "border-box",
-          margin: "auto",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-between",
-        }}>
+      <div style={{ marginTop: "5rem" }}>
         <div
-          style={{
-            textAlign: "center",
-            color: theme.palette.text.primary,
-            fontSize: "20px",
-          }}>
-          <h2>Sign Up</h2>
-        </div>
-        <form>
-          <div
             style={{
-              height: "18rem",
+              backgroundColor: theme.palette.card.primary,
+              borderRadius: "8px",
+              boxShadow: "0 0 10px rgba(0, 0, 0, 0.2)",
+              width: "80vw",
+              maxWidth: "40rem",
+              padding: "20px",
+              boxSizing: "border-box",
+              margin: "auto",
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-between",
-              padding: "1rem 2rem",
             }}>
-            <div style={{ marginBottom: "1rem" }}>
-              <TextField
-                label="Name"
-                name="name"
-                type="text"
-                value={signUpDetails.name}
-                onChange={handleChange}
-                fullWidth
-                variant="standard"
-                error={!!errors.name}
-                helperText={errors.name}
-              />
-            </div>
-            <div style={{ marginBottom: "1rem" }}>
-              <TextField
-                label="Email"
-                name="email"
-                type="text"
-                value={signUpDetails.email}
-                onChange={handleChange}
-                fullWidth
-                variant="standard"
-                error={!!errors.email}
-                helperText={errors.email}
-              />
-            </div>
-            <div style={{ marginBottom: "1rem" }}>
-              <TextField
-                label="Password"
-                name="password"
-                type="password"
-                value={signUpDetails.password}
-                onChange={handleChange}
-                fullWidth
-                variant="standard"
-                error={!!errors.password}
-                helperText={errors.password}
-              />
-            </div>
-            <Typography
-              variant="body2"
-              style={{ color: theme.palette.text.primary }}
-              align="center">
-              You already have an account? <Link to="/login">Login</Link>
-            </Typography>
-          </div>
           <div
-            style={{
-              display: "flex",
-              justifyContent: "flex-end",
-              gap: "10px",
-              padding: "0 2rem 1rem 0",
-            }}>
-            <Button variant="contained" color="primary" onClick={handleSignUp}>
-              Sign Up
-            </Button>
+              style={{
+                textAlign: "center",
+                color: theme.palette.text.primary,
+                fontSize: "20px",
+              }}>
+            <h2>Sign Up</h2>
           </div>
-        </form>
+          <form>
+            <div
+                style={{
+                  height: "18rem",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  padding: "1rem 2rem",
+                }}>
+              <div style={{ marginBottom: "1rem" }}>
+                <TextField
+                    label="Name"
+                    name="name"
+                    type="text"
+                    value={signUpDetails.name}
+                    onChange={handleChange}
+                    fullWidth
+                    variant="standard"
+                    error={!!errors.name}
+                    helperText={errors.name}
+                />
+              </div>
+              <div style={{ marginBottom: "1rem" }}>
+                <TextField
+                    label="Email"
+                    name="email"
+                    type="text"
+                    value={signUpDetails.email}
+                    onChange={handleChange}
+                    fullWidth
+                    variant="standard"
+                    error={!!errors.email}
+                    helperText={errors.email}
+                />
+              </div>
+              <div style={{ marginBottom: "1rem" }}>
+                <TextField
+                    label="Password"
+                    name="password"
+                    type="password"
+                    value={signUpDetails.password}
+                    onChange={handleChange}
+                    fullWidth
+                    variant="standard"
+                    error={!!errors.password}
+                    helperText={errors.password}
+                />
+              </div>
+              <Typography
+                  variant="body2"
+                  style={{ color: theme.palette.text.primary }}
+                  align="center">
+                You already have an account? <Link to="/login">Login</Link>
+              </Typography>
+            </div>
+            <div
+                style={{
+                  display: "flex",
+                  justifyContent: "flex-end",
+                  gap: "10px",
+                  padding: "0 2rem 1rem 0",
+                }}>
+              <Button variant="contained" color="primary" onClick={handleSignUp}>
+                Sign Up
+              </Button>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
   );
 }

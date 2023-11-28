@@ -11,11 +11,12 @@ import {
   Typography,
 } from "@mui/material";
 
-const TaskModal = ({ open, handleClose, onSubmit, isEdit = false, editTaskData, onUpdate, theme }) => {
+const TaskModal = ({ open, handleClose, onSubmit, isEdit = false, editTaskData, onUpdate }) => {
   const [taskDetails, setTaskDetails] = useState({
     title: "",
     description: "",
     priority: "LOW",
+    dueDate: new Date().toISOString().split("T")[0],
   });
 
   useEffect(() => {
@@ -24,6 +25,7 @@ const TaskModal = ({ open, handleClose, onSubmit, isEdit = false, editTaskData, 
         title: editTaskData.title,
         description: editTaskData.description,
         priority: editTaskData.priority,
+        dueDate: editTaskData.dueDate.split("T")[0],
       });
     }
   }, [isEdit, editTaskData]);
@@ -40,67 +42,87 @@ const TaskModal = ({ open, handleClose, onSubmit, isEdit = false, editTaskData, 
     }
   };
 
+  const handleCancel = () => {
+    handleClose();
+    setTaskDetails({
+      title: "",
+      description: "",
+      priority: "LOW",
+      dueDate: new Date().toISOString().split("T")[0],
+    });
+  };
+
   return (
-    <Modal open={open} onClose={handleClose}>
-      <Box
-        sx={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          bgcolor: theme.palette.card.primary,
-          boxShadow: 24,
-          p: 4,
-          borderRadius: "8px",
-          minWidth: "300px",
-        }}>
-        <Typography variant="h5" gutterBottom style={{color: theme.palette.text.primary}}>
-          Create Task
-        </Typography>
-        <TextField
-          label="Title"
-          name="title"
-          variant="outlined"
-          fullWidth
-          margin="normal"
-          value={taskDetails.title}
-          onChange={handleChange}
-        />
-        <TextField
-          label="Description"
-          name="description"
-          variant="outlined"
-          fullWidth
-          margin="normal"
-          value={taskDetails.description}
-          onChange={handleChange}
-        />
-        <FormControl variant="outlined" fullWidth margin="normal">
-          <InputLabel>Priority</InputLabel>
-          <Select
-            value={taskDetails.priority}
-            name="priority"
-            onChange={handleChange}
-            label="Priority">
-            <MenuItem value="LOW">Low</MenuItem>
-            <MenuItem value="MEDIUM">Medium</MenuItem>
-            <MenuItem value="HIGH">High</MenuItem>
-          </Select>
-        </FormControl>
-        <Box sx={{ textAlign: "right", mt: 2 }}>
-          <Button variant="outlined" onClick={handleClose} sx={{ mr: 2 }}>
-            Cancel
-          </Button>
-          <Button
-            variant="contained"
-            disabled={taskDetails.title.trim() === "" || taskDetails.description.trim() === ""}
-            onClick={handleSubmit}
-            color="primary">
-            {isEdit ? "Update" : "Create"}
-          </Button>
+      <Modal open={open} onClose={handleCancel}>
+        <Box
+            sx={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              bgcolor: theme.palette.card.primary,
+              boxShadow: 24,
+              p: 4,
+              borderRadius: "8px",
+              minWidth: "300px",
+            }}>
+          <Typography variant="h5" gutterBottom style={{color: theme.palette.text.primary}}>
+            Create Task
+          </Typography>
+          <TextField
+              label="Title"
+              name="title"
+              variant="outlined"
+              fullWidth
+              margin="normal"
+              value={taskDetails.title}
+              onChange={handleChange}
+          />
+          <TextField
+              label="Description"
+              name="description"
+              variant="outlined"
+              fullWidth
+              margin="normal"
+              value={taskDetails.description}
+              onChange={handleChange}
+          />
+          <TextField
+              label="Due Date"
+              name="dueDate"
+              variant="outlined"
+              fullWidth
+              margin="normal"
+              type="date"
+              value={taskDetails.dueDate}
+              onChange={handleChange}
+          />
+          <FormControl variant="outlined" fullWidth margin="normal">
+            <InputLabel>Priority</InputLabel>
+            <Select
+                value={taskDetails.priority}
+                name="priority"
+                onChange={handleChange}
+                label="Priority">
+              <MenuItem value="LOW">Low</MenuItem>
+              <MenuItem value="MEDIUM">Medium</MenuItem>
+              <MenuItem value="HIGH">High</MenuItem>
+            </Select>
+          </FormControl>
+          <Box sx={{ textAlign: "right", mt: 2 }}>
+            <Button variant="outlined" onClick={handleCancel} sx={{ mr: 2 }}>
+              Cancel
+            </Button>
+            <Button
+                variant="contained"
+                disabled={taskDetails.title.trim() === "" || taskDetails.description.trim() === ""}
+                onClick={handleSubmit}
+                color="primary">
+              {isEdit ? "Update" : "Create"}
+            </Button>
+          </Box>
         </Box>
-      </Box>
-    </Modal>
+      </Modal>
   );
 };
 
