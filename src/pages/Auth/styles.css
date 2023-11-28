@@ -1,0 +1,33 @@
+.signin-container {
+  background-color: #E7EAEF;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 50vw;
+  padding: 20px;
+  box-sizing: border-box;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.header {
+  text-align: center;
+  color: #217074; 
+  font-size: 20px;
+}
+
+.form-card {
+  height: 18rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 0 2rem 1rem 0;
+}
